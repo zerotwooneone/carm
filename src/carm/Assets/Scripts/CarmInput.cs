@@ -7,6 +7,8 @@ public class CarmInput : MonoBehaviour
     public GameObject WagBone;
     public GameObject CantBone;
     public GameObject RainbowBone;
+    public GameObject ParticleObject;
+    private ParticleSystem _particleFountain;
     public float wagSpeed = 0.025f;
     private float wagDegrees = 0f;
     private float cantDegrees = 0f;
@@ -16,7 +18,7 @@ public class CarmInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _particleFountain = ParticleObject.GetComponent<ParticleSystem>();
     }
 
     private float lastX = 0f;
@@ -47,6 +49,15 @@ public class CarmInput : MonoBehaviour
 
         Transform rainbowTransform = RainbowBone.transform;
         rainbowTransform.localEulerAngles = new Vector3(rainbowTransform.localEulerAngles.x, rainbowDegrees, rainbowTransform.localEulerAngles.z);
+
+        if(Input.GetAxis("Jump") != 0)
+        {
+            _particleFountain.Play();
+        }
+        else
+        {
+            _particleFountain.Stop();
+        }
 
     }
 }
