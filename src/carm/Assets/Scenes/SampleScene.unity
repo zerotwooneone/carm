@@ -409,8 +409,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WagBone: {fileID: 4696449452981811974}
   CantBone: {fileID: 7189478563668321840}
-  rotationZSpeed: 0.025
-  rotationXSpeed: 0.025
+  RainbowBone: {fileID: 1046165679}
+  wagSpeed: 0.025
+  cantSpeed: 0.025
+  rainbowSpeed: 0.025
 --- !u!4 &543450653182292422
 Transform:
   m_ObjectHideFlags: 0
