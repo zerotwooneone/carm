@@ -71,6 +71,7 @@ public class CarmInput : MonoBehaviour
 
         if((Input.GetAxis("Jump") != 0))
         {
+            //we must check to see if it is allready playing or else it will never play
             if (!_particleFountain.isPlaying)
             {
                 Debug.LogWarning($"Jump! isPlaying{_particleFountain.isPlaying}");
@@ -79,6 +80,7 @@ public class CarmInput : MonoBehaviour
         }
         else
         {
+            //we must check to see if it is allready playing or else it will never start
             if (_particleFountain.isPlaying)
             {
                 _particleFountain.Stop();
