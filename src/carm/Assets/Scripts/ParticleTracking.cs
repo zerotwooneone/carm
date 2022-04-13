@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ParticleTracking : MonoBehaviour
 {
-    public GameObject ParticleParent;
+    public GameObject Source;
     public GameObject Target;
-    private ParticleSystem _particleSystem;
+    private LineRenderer _lineRenderer;
+    public GameObject LineObject;
     // Start is called before the first frame update
     void Start()
     {
-        _particleSystem = ParticleParent.GetComponent<ParticleSystem>();
+        _lineRenderer = LineObject.GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _particleSystem.transform.LookAt(Target.transform.position);
+        _lineRenderer.SetPositions(new[] { Source.transform.position, Target.transform.position });
     }
 }
