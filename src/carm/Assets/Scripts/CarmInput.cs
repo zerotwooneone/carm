@@ -69,13 +69,21 @@ public class CarmInput : MonoBehaviour
         }
         
 
-        if(Input.GetAxis("Jump") != 0)
+        if((Input.GetAxis("Jump") != 0))
         {
-            _particleFountain.Play();
+            if (!_particleFountain.isPlaying)
+            {
+                Debug.LogWarning($"Jump! isPlaying{_particleFountain.isPlaying}");
+                _particleFountain.Play();
+            }            
         }
         else
         {
-            _particleFountain.Stop();
+            if (_particleFountain.isPlaying)
+            {
+                _particleFountain.Stop();
+            }
+            
         }
 
     }

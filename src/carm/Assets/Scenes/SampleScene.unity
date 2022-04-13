@@ -15623,7 +15623,7 @@ MonoBehaviour:
   WagBone: {fileID: 4696449452981811974}
   CantBone: {fileID: 7189478563668321840}
   RainbowBone: {fileID: 1046165679}
-  ParticleObject: {fileID: 0}
+  ParticleObject: {fileID: 755425213}
   CarmBase: {fileID: 919132148639869820}
   wagSpeed: 0.025
   cantSpeed: 0.025
