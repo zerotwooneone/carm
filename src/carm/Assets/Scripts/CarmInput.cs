@@ -8,6 +8,7 @@ public class CarmInput : MonoBehaviour
     public GameObject CantBone;
     public GameObject RainbowBone;
     public GameObject ParticleObject;
+    public GameObject CarmBase;
     private ParticleSystem _particleFountain;
     public float wagSpeed = 0.025f;
     private float wagDegrees = 0f;
@@ -15,6 +16,8 @@ public class CarmInput : MonoBehaviour
     private float rainbowDegrees = 0f;
     public float cantSpeed = 0.025f;
     public float rainbowSpeed = 0.025f;
+    public float TranslateSpeed = 0.005f;
+    public bool Translate = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,29 +29,45 @@ public class CarmInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        const float maxWagDegrees = 10;
-        const float minWagDegrees = -maxWagDegrees;
-        wagDegrees += Input.GetAxis("Horizontal") * wagSpeed;
-        wagDegrees = Mathf.Clamp(wagDegrees, minWagDegrees, maxWagDegrees);
+        if (Input.GetButtonDown("ModeSelection"))
+        {
+            Translate = !Translate;
+        }
 
-        Transform wagTransform = WagBone.transform;
-        wagTransform.localEulerAngles = new Vector3(wagTransform.localEulerAngles.x, wagTransform.localEulerAngles.y, wagDegrees);
+        if (Translate)
+        {
+            var localPosition = CarmBase.transform.localPosition;
+            float newX = localPosition.x + (Input.GetAxis("Horizontal") * TranslateSpeed);
+            float newZ = localPosition.z + (Input.GetAxis("Vertical") * TranslateSpeed);
+            var newPosition = new Vector3(newX, localPosition.y, newZ);
+            CarmBase.transform.localPosition = newPosition;
+        } else
+        {
+            const float maxWagDegrees = 10;
+            const float minWagDegrees = -maxWagDegrees;
+            wagDegrees += Input.GetAxis("Horizontal") * wagSpeed;
+            wagDegrees = Mathf.Clamp(wagDegrees, minWagDegrees, maxWagDegrees);
 
-        const float maxCantDegrees = 88;
-        const float minCantDegrees = -maxCantDegrees;
-        cantDegrees += Input.GetAxis("Vertical") * cantSpeed;
-        cantDegrees = Mathf.Clamp(cantDegrees, minCantDegrees, maxCantDegrees);
+            Transform wagTransform = WagBone.transform;
+            wagTransform.localEulerAngles = new Vector3(wagTransform.localEulerAngles.x, wagTransform.localEulerAngles.y, wagDegrees);
 
-        Transform cantTransform = CantBone.transform;
-        cantTransform.localEulerAngles = new Vector3(cantDegrees, cantTransform.localEulerAngles.y, cantTransform.localEulerAngles.z);
+            const float maxCantDegrees = 88;
+            const float minCantDegrees = -maxCantDegrees;
+            cantDegrees += Input.GetAxis("Vertical") * cantSpeed;
+            cantDegrees = Mathf.Clamp(cantDegrees, minCantDegrees, maxCantDegrees);
 
-        const float maxRainbowDegrees = 98;
-        const float minRainbowDegrees = -maxCantDegrees;
-        rainbowDegrees += Input.GetAxis("Rainbow") * rainbowSpeed;
-        rainbowDegrees = Mathf.Clamp(rainbowDegrees, minRainbowDegrees, maxRainbowDegrees);
+            Transform cantTransform = CantBone.transform;
+            cantTransform.localEulerAngles = new Vector3(cantDegrees, cantTransform.localEulerAngles.y, cantTransform.localEulerAngles.z);
 
-        Transform rainbowTransform = RainbowBone.transform;
-        rainbowTransform.localEulerAngles = new Vector3(rainbowTransform.localEulerAngles.x, rainbowDegrees, rainbowTransform.localEulerAngles.z);
+            const float maxRainbowDegrees = 98;
+            const float minRainbowDegrees = -maxCantDegrees;
+            rainbowDegrees += Input.GetAxis("Rainbow") * rainbowSpeed;
+            rainbowDegrees = Mathf.Clamp(rainbowDegrees, minRainbowDegrees, maxRainbowDegrees);
+
+            Transform rainbowTransform = RainbowBone.transform;
+            rainbowTransform.localEulerAngles = new Vector3(rainbowTransform.localEulerAngles.x, rainbowDegrees, rainbowTransform.localEulerAngles.z);
+        }
+        
 
         if(Input.GetAxis("Jump") != 0)
         {

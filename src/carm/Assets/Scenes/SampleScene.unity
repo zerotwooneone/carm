@@ -15624,9 +15624,12 @@ MonoBehaviour:
   CantBone: {fileID: 7189478563668321840}
   RainbowBone: {fileID: 1046165679}
   ParticleObject: {fileID: 0}
+  CarmBase: {fileID: 919132148639869820}
   wagSpeed: 0.025
   cantSpeed: 0.025
   rainbowSpeed: 0.025
+  TranslateSpeed: 0.005
+  Translate: 1
 --- !u!1 &2019314342
 GameObject:
   m_ObjectHideFlags: 0
@@ -15748,7 +15751,7 @@ GameObject:
   - component: {fileID: 543450653182292422}
   - component: {fileID: 1874476946}
   m_Layer: 0
-  m_Name: second
+  m_Name: carm base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
