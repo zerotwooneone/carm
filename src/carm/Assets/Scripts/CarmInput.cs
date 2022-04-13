@@ -74,7 +74,6 @@ public class CarmInput : MonoBehaviour
             //we must check to see if it is allready playing or else it will never play
             if (!_particleFountain.isPlaying)
             {
-                Debug.LogWarning($"Jump! isPlaying{_particleFountain.isPlaying}");
                 _particleFountain.Play();
             }            
         }
