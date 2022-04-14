@@ -24,8 +24,6 @@ public class CarmInput : MonoBehaviour
         _particleFountain = ParticleObject.GetComponent<ParticleSystem>();
     }
 
-    private float lastX = 0f;
-
     // Update is called once per frame
     void Update()
     {
