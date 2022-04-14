@@ -18,5 +18,6 @@ public class ParticleTracking : MonoBehaviour
     void Update()
     {
         _lineRenderer.SetPositions(new[] { Source.transform.position, Target.transform.position });
+        
     }
 }
